@@ -14,7 +14,9 @@ Agent::Agent()
 	token = true;
 }
 
-
+Agent::Agent(int i){
+	id = i;
+}
 
 Agent::~Agent()
 {

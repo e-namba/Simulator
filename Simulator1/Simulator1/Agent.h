@@ -36,6 +36,7 @@ public:
 
 	//cons decs
 	Agent();
+	Agent(int);
 	~Agent();
 };
 
