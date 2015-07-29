@@ -14,7 +14,7 @@ Graph::Graph()
 	//for (int i = 0; i < K; i++) agents[i].setId(i);
 
 
-	cout << "Graphを作成しました. (n = " << N
+	cout << "Graph is created. (n = " << N
 		<< ", k = " << K << ")" << endl;
 	cout << "-------------------- initial state --------------------" << endl;
 	Graph::showGraph();
