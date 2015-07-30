@@ -22,10 +22,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	alg->debug();
 	alg->showGraph();
 
-	for each(Node* n in alg->nodes)
-	{
-		cout << "node1 -> " << n->getId() << endl;
-	}
+	//for each(Node* n in alg->nodes)
+	//{
+	//	cout << "node1 -> " << n->getId() << endl;
+	//}
 
 	return 0;
 }

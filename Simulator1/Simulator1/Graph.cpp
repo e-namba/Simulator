@@ -8,14 +8,16 @@ using namespace std;
 Graph::Graph()
 {
 	// make instance Agent, Node
-	//agents = new Agent[K];
-	for (int i = 0; i < K; i++)agents.push_back(new Agent(i));
-	for (int i = 0; i < N; i++)nodes.push_back(new Node(i));
-	//for (int i = 0; i < K; i++) agents[i].setId(i);
+	nodes = new Node[N];
+	agents = new Agent[K];
+	//for (int i = 0; i < K; i++)agents.push_back(new Agent(i));
+	//for (int i = 0; i < N; i++)nodes.push_back(new Node(i));
+	for (int i = 0; i < N; i++) nodes[i].setId(i);
+	for (int i = 0; i < K; i++) agents[i].setId(i);
 
 
-	cout << "Graph is created. (n = " << N
-		<< ", k = " << K << ")" << endl;
+	cout << "Graph が作成されました. (n = " << N
+		 << ", k = " << K << ")" << endl;
 	cout << "-------------------- initial state --------------------" << endl;
 	Graph::showGraph();
 	cout << "-------------------------------------------------------" << endl;
@@ -41,17 +43,18 @@ void Graph::showGraph()
 	for (int i = 0; i < K; i++){
 		cout << "a" << setw(2) << i << "  ";
 
-		/*for (int j = 0; j < agents[i].getLocation(); j++){
+		for (int j = 0; j < agents[i].getLocation(); j++){
 			cout << "    ";
-		}*/
-
-		for (int j = 0; j < getAgent(i).; j++) cout << "    ";
+		}
 		cout << agents[i].getState() << endl;
+
+
+		//for (int j = 0; j < getAgent(i)->getLocation(); j++) cout << "    ";
 	}
 
 }
 
-// for debug
+// デバッグ用関数
 void Graph::debug(){
 	agents[2].setState(2);
 	agents[3].setState(3);
@@ -65,22 +68,22 @@ void Graph::debug(){
 	agents[3].move();
 }
 
-std::list<Agent*>::iterator Graph::getAgent(int id){
-	std::list<Agent*>::iterator itr = agents.begin();
-	int i = 0;
-	while (i != id){
-		itr++;
-		i++;
-	}
-	return itr;
-}
-
-std::list<Node*>::iterator Graph::getNode(int id){
-	std::list<Node*>::iterator itr = nodes.begin();
-	int i = 0;
-	while (i != id){
-		itr++;
-		i++;
-	}
-	return itr;
-}
+//std::list<Agent*>::iterator Graph::getAgent(int id){
+//	std::list<Agent*>::iterator itr = agents.begin();
+//	int i = 0;
+//	while (i != id){
+//		itr++;
+//		i++;
+//	}
+//	return itr;
+//}
+//
+//std::list<Node*>::iterator Graph::getNode(int id){
+//	std::list<Node*>::iterator itr = nodes.begin();
+//	int i = 0;
+//	while (i != id){
+//		itr++;
+//		i++;
+//	}
+//	return itr;
+//}

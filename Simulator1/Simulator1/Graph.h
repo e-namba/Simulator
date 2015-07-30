@@ -5,9 +5,12 @@ class Graph
 public:
 	Graph();
 	~Graph();
-	//Agent* agents;
-	std::list<Agent*> agents;
-	std::list<Node*> nodes;
+	Agent* agents;
+	Node* nodes;
+	//std::list<Agent*> agents;
+	//std::list<Node*> nodes;
+
+
 
 	void Graph::showGraph();
 	void Graph::debug();
