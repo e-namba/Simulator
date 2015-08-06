@@ -2,5 +2,5 @@
 define constants
 */
 
-const int N = 12; // n
-const int K = 4; // k
+const int N = 12;
+const int K = 4;

@@ -7,7 +7,7 @@ private:
 public:
 	Algo();
 	~Algo();
-
+	
 	void exeAlgorithm();
 
 
