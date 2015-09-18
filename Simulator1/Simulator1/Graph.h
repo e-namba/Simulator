@@ -10,6 +10,8 @@ public:
 	//std::list<Agent*> agents;
 	//std::list<Node*> nodes;
 
+	void Graph::showPattern();
+	void Graph::checkPattern();
 
 
 	void Graph::showGraph();

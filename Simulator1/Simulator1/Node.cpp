@@ -19,10 +19,18 @@ Node::~Node()
 
 void Node::setId(int i)
 {
-	id = i;
+	this->id = i;
 }
 
 int Node::getId()
 {
 	return this->id;
+}
+
+void Node::setToken(){
+	this->token = true;
+}
+
+bool Node::isToken(){
+	return this->token;
 }

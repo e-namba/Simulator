@@ -13,5 +13,7 @@ public:
 	//function
 	void Node::setId(int);
 	int Node::getId();
+	void Node::setToken();
+	bool Node::isToken();
 };
 

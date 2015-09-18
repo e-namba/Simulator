@@ -7,10 +7,9 @@ using namespace std;
 //constructor
 Agent::Agent()
 {
-	location = 0;
+
 	state = 0;
-	goal = -1;
-	ndash = 0;
+	
 	token = true;
 }
 
@@ -20,8 +19,9 @@ Agent::Agent(int i){
 
 Agent::~Agent()
 {
-
+	
 }
+
 
 
 
@@ -33,18 +33,7 @@ void Agent::move()
 {
 	location = nextloc;
 }
-void Agent::checkPat(list<int> sub)
-{
-}
-void Agent::halfPat()
-{
-}
-void Agent::lexSort()
-{
-}
-void Agent::shareTheOthers()
-{
-}
+
 
 void Agent::setNextlocation(int loc){
 	if (loc == N){
@@ -53,6 +42,10 @@ void Agent::setNextlocation(int loc){
 	else{
 		nextloc = loc;
 	}
+}
+
+void Agent::setLocation(int loc){
+	location = loc;
 }
 
 void Agent::setId(int i)

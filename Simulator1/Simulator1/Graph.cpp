@@ -1,6 +1,8 @@
 ﻿
 #include "stdafx.h"
-
+#include "time.h"
+#include "vector"
+#include "algorithm"
 
 
 using namespace std;
@@ -12,10 +14,26 @@ Graph::Graph()
 	agents = new Agent[K];
 	//for (int i = 0; i < K; i++)agents.push_back(new Agent(i));
 	//for (int i = 0; i < N; i++)nodes.push_back(new Node(i));
-	for (int i = 0; i < N; i++) nodes[i].setId(i);
-	for (int i = 0; i < K; i++) agents[i].setId(i);
+
+	vector<int> v;
+	time_t  nowtime;
+	time(&nowtime);
+	srand((int)nowtime);
+	
+	for (int i = 0; i < N; i++){
+		nodes[i].setId(i);
+		v.push_back(i);
+	}
+	random_shuffle(v.begin(), v.end());
+	for (int i = 0; i < K; i++){
+		agents[i].setId(i);
+		agents[i].setLocation(v[i]);
+		nodes[v[i]].setToken();
+	}
 
 
+
+	
 	cout << "Graph が作成されました. (n = " << N
 		 << ", k = " << K << ")" << endl;
 	cout << "-------------------- initial state --------------------" << endl;
@@ -54,9 +72,9 @@ void Graph::showGraph()
 
 }
 
-// デバッグ用関数
+// for debug
 void Graph::debug(){
-	agents[2].setState(2);
+	/*agents[2].setState(2);
 	agents[3].setState(3);
 	agents[1].setNextlocation(3);
 	agents[1].move();
@@ -65,8 +83,44 @@ void Graph::debug(){
 	agents[3].move();
 	Graph::showGraph();
 	agents[3].setNextlocation(12);
-	agents[3].move();
+	agents[3].move();*/
 }
+
+void Graph::showPattern(){
+	int ans=-1;
+	int loc = 0;
+	int ctr = 0;
+	vector<int> pat;
+	while (ans < 0){
+		if (nodes[loc].isToken()) ans = loc;
+		loc++;
+	}
+	
+	for (int i = 0; i < N; i++){
+		if (loc + i >= N){
+			loc = loc + i - N;
+		}
+		else{
+			loc = loc + i;
+		}
+
+		if (!nodes[loc].isToken()){
+			ctr++;
+		}
+		else{
+			pat.push_back(ctr);
+			ctr = 0;
+		}
+	}
+	
+	for (int i = 0; i < pat.size();i++) {
+		cout << pat[i] << ", ";
+	}
+	cout << endl;
+
+}
+
+
 
 //std::list<Agent*>::iterator Graph::getAgent(int id){
 //	std::list<Agent*>::iterator itr = agents.begin();

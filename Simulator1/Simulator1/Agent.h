@@ -25,8 +25,9 @@ public:
 	int Agent::getLocation();
 	int Agent::getState();
 	void setNextlocation(int);
+	void setLocation(int);
 	void setState(int);
-
+	void putToken();
 
 	//for debug
 	void Agent::forDebug();
