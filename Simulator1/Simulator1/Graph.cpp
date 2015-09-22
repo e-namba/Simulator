@@ -9,6 +9,7 @@ using namespace std;
 
 Graph::Graph()
 {
+
 	// make instance Agent, Node
 	nodes = new Node[N];
 	agents = new Agent[K];
@@ -43,7 +44,7 @@ Graph::Graph()
 
 
 
-Graph::~Graph()
+Graph::~Graph() 
 {
 
 }
@@ -86,41 +87,73 @@ void Graph::debug(){
 	agents[3].move();*/
 }
 
+// TODO Fix this function.
 void Graph::showPattern(){
-	int ans=-1;
-	int loc = 0;
-	int ctr = 0;
-	vector<int> pat;
-	while (ans < 0){
-		if (nodes[loc].isToken()) ans = loc;
-		loc++;
+
+	int c = 0;
+	while (1){
+		if (nodes[c].isToken()) break;
+		c++;
 	}
-	
-	for (int i = 0; i < N; i++){
-		if (loc + i >= N){
-			loc = loc + i - N;
-		}
-		else{
-			loc = loc + i;
+	int tmp = c;
+	c++;
+	int dis = 1;
+	while (c <= N + tmp){
+		if (c >= N){
+			if (nodes[c - N].isToken()){
+				pat.push_back((dis));
+				dis = 1;
+			}else dis++;
+		}else{
+			if (nodes[c].isToken()){
+				pat.push_back(dis);
+				dis = 1;
+			}
+			else dis++;
 		}
 
-		if (!nodes[loc].isToken()){
-			ctr++;
-		}
-		else{
-			pat.push_back(ctr);
-			ctr = 0;
-		}
+		c++;
+
 	}
-	
 	for (int i = 0; i < pat.size();i++) {
 		cout << pat[i] << ", ";
 	}
 	cout << endl;
 
+
 }
 
 
+// TODO fix this function 
+// now only checking "two-cyclic" is available 
+bool Graph::isCyclic(){
+	vector<int>	pat = { 1, 2, 3, 4, 1, 2, 3, 4 };
+	for (int i = 0; i < pat.size(); i++){
+		cout << pat[i] << " ";
+	}
+	vector<int> tmp;
+	int mid = pat.size() / 2;
+	
+	// copy tmp <- pat(the last half)
+	for (int i = mid; i < pat.size(); i++){
+		tmp.push_back(pat[i]);
+	}
+	//erace the last half of pat
+	for (int i = 0; i < mid; i++){
+		pat.pop_back();
+	}
+
+	//tmp:the last half  pat:the first half
+	
+	if (pat == tmp) return true;
+	return false;
+}
+
+
+//for debug
+void Graph::setTestpattern(){
+	
+}
 
 //std::list<Agent*>::iterator Graph::getAgent(int id){
 //	std::list<Agent*>::iterator itr = agents.begin();

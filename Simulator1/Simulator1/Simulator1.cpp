@@ -17,7 +17,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	alg->debug();
 	alg->showPattern();
-
+	//alg->setTestpattern();
+	//alg->isCyclic();
 	
 
 	//for each(Node* n in alg->nodes)
